@@ -54,7 +54,7 @@ namespace RemoteKeycard
                 
                 Log.Debug($"Allowed: {ev.IsAllowed}, Permission?: {ev.Player.HasKeycardPermission(ev.Door.RequiredPermissions.RequiredPermissions)}, Current Item: ${ev.Player.CurrentItem}");
 
-                if(!ev.IsAllowed && ev.Player.HasKeycardPermission(ev.Door.RequiredPermissions.RequiredPermissions))
+                if(!ev.IsAllowed && !ev.Door.IsLocked && ev.Player.HasKeycardPermission(ev.Door.RequiredPermissions.RequiredPermissions))
                     ev.IsAllowed = true;
 
             } catch(Exception e)
